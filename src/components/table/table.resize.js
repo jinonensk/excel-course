@@ -1,7 +1,6 @@
 import {$} from '@core/dom'
 
 export function resizeHandler($root, evt) {
-  console.log('Start resiziong', evt.target.dataset.resize)
   const $resizer = $(evt.target)
   // const $parent = $resizer.$el.parentNode // bad
   // const $parent = $resizer.$el.closest('.column') // better
