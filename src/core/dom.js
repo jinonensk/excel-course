@@ -5,6 +5,10 @@ class Dom {
       typeof selector === 'string' ? document.querySelector(selector) : selector
   }
 
+  get data() {
+    return this.$el.dataset
+  }
+
   html(html) {
     if (typeof html === 'string') {
       this.$el.innerHTML = html
@@ -14,7 +18,7 @@ class Dom {
   }
 
   text(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       this.$el.textContent = text
       return this
     }
@@ -53,10 +57,6 @@ class Dom {
     return this
   }
 
-  get data() {
-    return this.$el.dataset
-  }
-
   closest(selector) {
     return $(this.$el.closest(selector))
   }
@@ -76,6 +76,13 @@ class Dom {
   css(styles = {}) {
     Object.keys(styles).forEach(key => (this.$el.style[key] = styles[key]))
     return this
+  }
+
+  getStyles(styles = []) {
+    return styles.reduce((acc, s) => {
+      acc[s] = this.$el.style[s]
+      return acc
+    }, {})
   }
 
   id(parse) {
@@ -102,6 +109,14 @@ class Dom {
   removeClass(className) {
     this.$el.classList.remove(className)
     return this
+  }
+
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value)
+      return this
+    }
+    return this.$el.getAttribute(name)
   }
 }
 export function $(selector) {
