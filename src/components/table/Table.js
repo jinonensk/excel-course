@@ -34,9 +34,7 @@ export class Table extends ExcelComponent {
     this.selectCell($cell)
 
     this.$on('formula:input', value => {
-      this.selection.current
-          .attr('data-value', value)
-          .text(parse(value))
+      this.selection.current.attr('data-value', value).text(parse(value))
       this.updateTextInStore(value)
     })
 
@@ -53,14 +51,6 @@ export class Table extends ExcelComponent {
           })
       )
     })
-
-    // this.$subscribe(state => {
-    //   console.log('tableState', state)
-    // })
-
-    // this.$on('formula:done', () => {
-    //   this.selection.current.focus()
-    // })
   }
 
   selectCell($cell) {
