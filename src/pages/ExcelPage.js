@@ -1,6 +1,7 @@
 import {Page} from '@core/Page'
 // import {$} from '@core/dom'
 import {debounce, storage} from '@core/utils'
+import {createStore} from '@core/store/createStore'
 
 import {Excel} from '@/components/excel/Excel'
 import {Formula} from '@/components/formula/Formula'
@@ -8,7 +9,7 @@ import {Header} from '@/components/header/Header'
 import {Table} from '@/components/table/Table'
 import {Toolbar} from '@/components/toolbar/Toolbar'
 
-import {createStore, normalizeInitialState, rootReducer} from '@/redux'
+import {normalizeInitialState, rootReducer} from '@/redux'
 
 function storageName(param) {
   return `excel:${param}`
